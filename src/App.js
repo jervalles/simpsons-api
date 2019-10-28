@@ -1,8 +1,8 @@
 import React from "react";
-import DisplayEmployee from "./components/DisplayEmployee";
+import DisplaySimpson from "./components/DisplaySimpson";
 import axios from "axios";
 
-const sampleEmployee = {
+const sampleSimpson = {
   character: "Waylon Smithers",
   image:
     "https://cdn.glitch.com/3c3ffadc-3406-4440-bb95-d40ec8fcde72%2FWaylonSmithers.png?1497567511840",
@@ -13,12 +13,12 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      employee: sampleEmployee
+      Simpson: sampleSimpson
     };
-    this.getEmployee = this.getEmployee.bind(this);
+    this.getSimpson = this.getSimpson.bind(this);
   }
 
-  getEmployee() {
+  getSimpson() {
     // Send the request
     axios
       .get("https://quests.wilders.dev/simpsons-quotes/quotes")
@@ -27,7 +27,7 @@ class App extends React.Component {
       // Use this data to update the state
       .then(data => {
         this.setState({
-          employee: data[0]
+          Simpson: data[0]
         });
       });
   }
@@ -35,8 +35,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <DisplayEmployee employee={this.state.employee} />
-        <button type="button" onClick={this.getEmployee}>
+        <DisplaySimpson Simpson={this.state.Simpson} />
+        <button type="button" onClick={this.getSimpson}>
           Get new Simpson
         </button>
       </div>
